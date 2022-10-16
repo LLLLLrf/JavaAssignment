@@ -10,8 +10,6 @@ public class GameGrid extends AbstractGameGrid {
     public String[][] gameGrid;
     public AbstractBattleShip[] ships;
 
-
-    
     // Define constructors
     public GameGrid() {
     }
@@ -20,6 +18,19 @@ public class GameGrid extends AbstractGameGrid {
         this.width = width;
         this.height = height;
         this.num = num;
+
+        // 初始化棋盘变量，开辟适当空间
+        gameGrid = new String[height][width];
+
+        // 初始化棋盘
+        initializeGrid();
+
+        // 建船
+        generateShips(num);
+
+        for (int i = 0; i < num; i++) {
+            placeShip(ships[i]);
+        }
     }
 
     public int getWidth() {
@@ -46,60 +57,64 @@ public class GameGrid extends AbstractGameGrid {
         this.num = num;
     }
 
-
-    //populate the grid with "." characters
-	public void initializeGrid (int row, int col){
-        for(int i=0;i<row;i++){
-            for(int j=0;j<col;j++){
-                this.gameGrid[i][j]=".";
+    // populate the grid with "." characters
+    @Override
+    public void initializeGrid() {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                this.gameGrid[i][j] = ".";
             }
         }
-    } ;
-	
-	//this should place the ship on the grid using "*" symbol
-	public void placeShip (AbstractBattleShip ship){
+    };
+
+    // this should place the ship on the grid using "*" symbol
+    @Override
+    public void placeShip(AbstractBattleShip ship) {
         Random r = new Random();
         // 开的数组大小要多少
-        int[][] coordinate = new int[2][1];
+        int[][] coordinate = new int[3][2];
         String orient = ship.getShipOrientation();
 
         int row;
         int col;
-        if(orient == "horizontal"){
+        if (orient == "horizontal") {
             row = r.nextInt(height);
-            col = r.nextInt(width-2)+1;
+            col = r.nextInt(width - 2) + 1;
+            // System.out.println(row);
+            // System.out.println(col);
+            // for (int[] i : coordinate) {
+            //     System.out.print(i[0] + " " + i[1] + "\n");
+            // }
+            // for (int i : coordinate[0]) {
+            //     System.out.print(i + " ");
+            // }
+
             coordinate[0][0] = row;
             coordinate[0][1] = col;
             ship.setShipCoordinates(coordinate);
-            this.gameGrid[row][col-1]="*";
-            this.gameGrid[row][col+1]="*";
-            this.gameGrid[row][col]="*";
-        }else if(orient == "vertical"){
-            row = r.nextInt(height-2)+1;
+            this.gameGrid[row][col - 1] = "*";
+            this.gameGrid[row][col + 1] = "*";
+            this.gameGrid[row][col] = "*";
+        } else if (orient == "vertical") {
+            row = r.nextInt(height - 2) + 1;
             col = r.nextInt(width);
             coordinate[0][0] = row;
             coordinate[0][1] = col;
             ship.setShipCoordinates(coordinate);
-            this.gameGrid[row+1][col]="*";
-            this.gameGrid[row-1][col]="*";
-            this.gameGrid[row][col]="*";
+            this.gameGrid[row + 1][col] = "*";
+            this.gameGrid[row - 1][col] = "*";
+            this.gameGrid[row][col] = "*";
         }
-        
 
-    } ;
-	
-	//this should generate ships for both player and the opponent 
-	public void generateShips (int numberOfShips){
-        // 可以我方奇数敌方偶数
-        ships = new AbstractBattleShip[numberOfShips*2];
-        for(int i=0;i<numberOfShips;i++){
-            String name = "myship"+i;
+    };
+
+    // this should generate ships for both player and the opponent
+    @Override
+    public void generateShips(int numberOfShips) {
+        ships = new AbstractBattleShip[numberOfShips];
+        for (int i = 0; i < numberOfShips; i++) {
+            String name = "ship" + i;
             ships[i] = new BattleShip(name);
         }
-        for(int i=0;i<numberOfShips;i++){
-            String name = "opponentship"+i;
-            ships[i] = new BattleShip(name);
-        }
-    } 
-    
+    }
 }
