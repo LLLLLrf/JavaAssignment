@@ -59,9 +59,26 @@ public class BattleShip extends AbstractBattleShip {
     public boolean checkAttack(int row, int column) {
 
         if (this.hits < 3) {
-            for(int i=0;i<3;i++) {
-                if(this.shipCoordinates[i][0]==row && this.shipCoordinates[i][1]==column){
-                    this.hits++;
+            if(shipOrientation=="horizontal"){
+                if(shipCoordinates[0][0]==row && shipCoordinates[0][1]==column){
+                    hits++;
+                    return true;
+                }else if(shipCoordinates[0][0]==row && (shipCoordinates[0][1]+1)==column){
+                    hits++;
+                    return true;
+                }else if(shipCoordinates[0][0]==row && (shipCoordinates[0][1]-1)==column){
+                    hits++;
+                    return true;
+                }
+            }else{
+                if(shipCoordinates[0][0]==row && shipCoordinates[0][1]==column){
+                    hits++;
+                    return true;
+                }else if((shipCoordinates[0][0]+1)==row && shipCoordinates[0][1]==column){
+                    hits++;
+                    return true;
+                }else if((shipCoordinates[0][0]-1)==row && shipCoordinates[0][1]==column){
+                    hits++;
                     return true;
                 }
             }
