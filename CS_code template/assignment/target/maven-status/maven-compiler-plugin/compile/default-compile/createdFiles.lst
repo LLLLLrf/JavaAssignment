@@ -1,4 +1,9 @@
-abdn\scnu\cs\AbstractGameGrid.class
+abdn\scnu\cs\RunGame.class
+abdn\scnu\cs\BattleShip.class
 abdn\scnu\cs\PlayerGameGrid.class
+abdn\scnu\cs\Game.class
+abdn\scnu\cs\AbstractGameGrid.class
+abdn\scnu\cs\GameControls.class
+abdn\scnu\cs\OpponentGameGrid.class
 abdn\scnu\cs\AbstractBattleShip.class
 abdn\scnu\cs\GameGrid.class

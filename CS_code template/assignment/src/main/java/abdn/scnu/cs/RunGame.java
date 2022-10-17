@@ -26,7 +26,7 @@ public class RunGame {
             coord[1] = m.group(2);
             try {
                 coord[2] = m.group(3);
-            } catch (IndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException NumberFormatException) {
 
             }
             return coord;
@@ -36,7 +36,7 @@ public class RunGame {
 
     public static void main(String[] args) {
         String pt1 = "(\\d?\\d?\\d?\\d)[\\s,/.](\\d?\\d?\\d?\\d)[\\s,/.](\\d?\\d?\\d?\\d)";
-        String pt2 = "(\\d?\\d?\\d?\\d)[\\s,/.](\\d?\\d?\\d?\\d)";
+        String pt2 = "(-?\\d?\\d?\\d?\\d)[\\s,/.](-?\\d?\\d?\\d?\\d)";
         Pattern p1 = Pattern.compile(pt1);
         Pattern p2 = Pattern.compile(pt2);
         Scanner sc = new Scanner(System.in);
@@ -55,19 +55,21 @@ public class RunGame {
 
         while (true) {
             String playerInput = sc.nextLine();
+            if(playerInput.equals("exit")){exit();}
             game.clearScreen();
             String[] temp = findCoordinate(p2, playerInput);
             if (temp[0] == "none") {
-                System.out.println("no valid input was found");
-                sc.close();
-                exit();
+                System.out.println("Incorrect input");
+                System.out.println("");
+                game.oppGameGrid.printGrid();
+                game.myGameGrid.printGrid();
+                continue;
             }
-            int tmp1 = Integer.parseInt(temp[0])-1;
-            int tmp2 = Integer.parseInt(temp[1])-1;
-            // I switch the row and column because of personal habit
-            temp[1] = String.valueOf(tmp1);
-            temp[0] = String.valueOf(tmp2);
-            String coordinates = temp[0] + " " + temp[1];
+            int tmp1 = Integer.parseInt(temp[0]);
+            int tmp2 = Integer.parseInt(temp[1]);
+            temp[0] = String.valueOf(tmp1);
+            temp[1] = String.valueOf(tmp2);
+            String coordinates = temp[0] + "," + temp[1];
             // System.out.println(coordinates);
             game.playRound(coordinates);
             // game.myGameGrid.printGrid();

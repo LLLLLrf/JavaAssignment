@@ -7,8 +7,8 @@ public class GameGrid extends AbstractGameGrid {
     protected int height;
     protected int num;
 
-    public String[][] gameGrid;
-    public AbstractBattleShip[] ships;
+    // public String[][] gameGrid;
+    // public AbstractBattleShip[] ships;
 
     // Define constructors
     public GameGrid() {
@@ -71,7 +71,6 @@ public class GameGrid extends AbstractGameGrid {
     @Override
     public void placeShip(AbstractBattleShip ship) {
         Random r = new Random();
-        // 开的数组大小要多少
         int[][] coordinate = new int[3][2];
         String orient = ship.getShipOrientation();
 
@@ -80,15 +79,6 @@ public class GameGrid extends AbstractGameGrid {
         if (orient == "horizontal") {
             row = r.nextInt(height);
             col = r.nextInt(width - 2) + 1;
-            // System.out.println(row);
-            // System.out.println(col);
-            // for (int[] i : coordinate) {
-            //     System.out.print(i[0] + " " + i[1] + "\n");
-            // }
-            // for (int i : coordinate[0]) {
-            //     System.out.print(i + " ");
-            // }
-
             coordinate[0][0] = row;
             coordinate[0][1] = col;
             ship.setShipCoordinates(coordinate);
@@ -113,7 +103,7 @@ public class GameGrid extends AbstractGameGrid {
     public void generateShips(int numberOfShips) {
         ships = new AbstractBattleShip[numberOfShips];
         for (int i = 0; i < numberOfShips; i++) {
-            String name = "ship" + i;
+            String name = "Ship " + (i+1);
             ships[i] = new BattleShip(name);
         }
     }
