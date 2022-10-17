@@ -41,6 +41,8 @@ public class RunGame {
         Pattern p2 = Pattern.compile(pt2);
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("Please enter the size of game grid and the number of ships");
+
         String input = sc.nextLine();
         if (input.equals("exit")) {
             sc.close();
