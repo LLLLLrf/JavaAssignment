@@ -7,13 +7,12 @@ import org.junit.Test;
 import abdn.scnu.cs.AbstractGameGrid;
 
 import abdn.scnu.cs.BattleShip;
-/* 
 import abdn.scnu.cs.Game;
 import abdn.scnu.cs.GameControls;
 import abdn.scnu.cs.GameGrid;
 import abdn.scnu.cs.OpponentGameGrid;
 import abdn.scnu.cs.PlayerGameGrid;
-*/
+
 import org.junit.Before;
 import org.junit.After;
 
@@ -80,7 +79,7 @@ public class GameTests {
         }
 	}
 	
-/*
+
 	@Test
 	public void t1_2() {
 		try {
@@ -536,5 +535,5 @@ public class GameTests {
 			    }	
 		
 	}
-*/
+
 }

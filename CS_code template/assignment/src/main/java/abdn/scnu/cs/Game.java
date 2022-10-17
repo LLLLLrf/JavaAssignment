@@ -26,39 +26,41 @@ public class Game implements GameControls {
     }
 
     public void playRound(String input) {
-        String[] coord = input.split(" ");
+        String[] coord = input.split(",");
         int[] hit_coordinates = { Integer.parseInt(coord[0]), Integer.parseInt(coord[1]) };
 
         // check the input
         if (hit_coordinates[0] >= this.row || hit_coordinates[1] >= this.col) {
             System.out.printf(
-                    "Coordinates out of range, please enter a number less than %d for row and less than %d for column\n",
+                    "Coordinates out of range, please enter a number less than %d for row and less than %d for column\n\n",
                     this.row, this.col);
             oppGameGrid.printGrid();
             myGameGrid.printGrid();
             return;
         }
         if (hit_coordinates[0] < 0 || hit_coordinates[1] < 0) {
-            System.out.println("Please enter a nonnegative number");
+            System.out.println("Please enter a nonnegative number\n");
             oppGameGrid.printGrid();
             myGameGrid.printGrid();
             return;
         }
         if (oppGameGrid.gameGrid[hit_coordinates[0]][hit_coordinates[1]] == "%"
                 || oppGameGrid.gameGrid[hit_coordinates[0]][hit_coordinates[1]] == "X") {
-            System.out.println("The coordinates has been attacked, please choose another one");
+            System.out.println("The coordinates has been attacked, please choose another one\n");
             oppGameGrid.printGrid();
             myGameGrid.printGrid();
             return;
         }
 
         // player's turn
+
+        // mark the result, if hit, res=true
         boolean res = false;
+        // traverse all the ships
         for (int i = 0; i < oppGameGrid.ships.length; i++) {
-            // int[][] ship_coordinate = oppGameGrid.ships[i].shipCoordinates;
-            // boolean hit = false;
             if (oppGameGrid.ships[i].checkAttack(hit_coordinates[0], hit_coordinates[1])) {
                 System.out.printf("HIT %s!!!", oppGameGrid.ships[i].getName());
+                System.out.println("");
                 oppGameGrid.gameGrid[hit_coordinates[0]][hit_coordinates[1]] = "X";
                 if (!res) {
                     res = true;
@@ -67,20 +69,14 @@ public class Game implements GameControls {
                 if (!res) {
                     oppGameGrid.gameGrid[hit_coordinates[0]][hit_coordinates[1]] = "%";
                 }
-                // System.out.println("MISS!!!");
             }
-            // if(hit){
-            // System.out.printf("HIT %s!!!",oppGameGrid.ships[i].name);
-            // }else{
-            // System.out.println("MISS!!!");
-            // }
-
         }
+
         if (!res) {
             System.out.println("MISS!!!");
         }
-        System.out.println("");
 
+        System.out.println("");
         oppGameGrid.printGrid();
 
         // opponent's turn
@@ -88,6 +84,7 @@ public class Game implements GameControls {
         while (true) {
             int r = rand.nextInt(this.row);
             int c = rand.nextInt(this.col);
+            // if the coordinate has been attacked, randomly choose another one
             if (oppGameGrid.gameGrid[r][c] == "%" || oppGameGrid.gameGrid[r][c] == "X") {
                 continue;
             }
@@ -104,14 +101,16 @@ public class Game implements GameControls {
     };
 
     public boolean checkVictory() {
-        int my_deadship = 0;
-        int opp_deadship = 0;
+        // record the number of dead ships, if all die, game over
+        int my_deadships = 0;
+        int opp_deadships = 0;
         for (int i = 0; i < myGameGrid.ships.length; i++) {
             AbstractBattleShip ship = myGameGrid.ships[i];
+            // if hits>=3, the ship has died
             if (ship.getHits() < 3) {
                 continue;
             } else {
-                my_deadship++;
+                my_deadships++;
             }
         }
         for (int i = 0; i < oppGameGrid.ships.length; i++) {
@@ -119,14 +118,14 @@ public class Game implements GameControls {
             if (ship.getHits() < 3) {
                 continue;
             } else {
-                opp_deadship++;
+                opp_deadships++;
             }
         }
         boolean Iwin = false;
         boolean Ilose = false;
-        if (my_deadship == myGameGrid.ships.length) {
+        if (my_deadships == myGameGrid.ships.length) {
             Ilose = true;
-        } else if (opp_deadship == oppGameGrid.ships.length) {
+        } else if (opp_deadships == oppGameGrid.ships.length) {
             Iwin = true;
         }
         if (Iwin) {
@@ -138,7 +137,7 @@ public class Game implements GameControls {
             return true;
         }
         if (Ilose) {
-            System.out.println("You have loss!");
+            System.out.println("You have lost!");
             return true;
         }
         return false;
@@ -146,7 +145,7 @@ public class Game implements GameControls {
 
     public void exitGame(String input) {
         if (input == "exit") {
-            System.out.println("Exiting game-thank you for playing");
+            System.out.println("Exiting game-thank you for playing...");
             try {
                 Thread.sleep(3000);
             } catch (Exception e) {

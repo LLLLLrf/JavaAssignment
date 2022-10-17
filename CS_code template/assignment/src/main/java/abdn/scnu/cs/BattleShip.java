@@ -5,11 +5,7 @@ import java.util.Random;
 public class BattleShip extends AbstractBattleShip {
     Random r = new Random();
 
-    protected String name;
-    protected int hits;
-    protected String shipOrientation;
-    // 这没初始化可能有问题
-    protected int[][] shipCoordinates;
+
     protected String[] orientations = { "horizontal", "vertical" };
 
     // Define constructors
