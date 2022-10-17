@@ -2,7 +2,7 @@
 ## JavaAssignment
 ***
 ## How to begin
-run the main function at **RunGame.java**
+run the main function at **RunGame.java** 
 
 use  ```mvn clean test``` to run the test
 

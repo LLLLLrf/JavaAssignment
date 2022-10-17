@@ -76,7 +76,7 @@ public class GameGrid extends AbstractGameGrid {
 
         int row;
         int col;
-        if (orient == "horizontal") {
+        if (orient.equals("horizontal")) {
             row = r.nextInt(height);
             col = r.nextInt(width - 2) + 1;
             coordinate[0][0] = row;
@@ -85,7 +85,7 @@ public class GameGrid extends AbstractGameGrid {
             this.gameGrid[row][col - 1] = "*";
             this.gameGrid[row][col + 1] = "*";
             this.gameGrid[row][col] = "*";
-        } else if (orient == "vertical") {
+        } else if (orient.equals("vertical")) {
             row = r.nextInt(height - 2) + 1;
             col = r.nextInt(width);
             coordinate[0][0] = row;

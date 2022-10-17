@@ -9,12 +9,11 @@ public class RunGame {
     public static void exit() {
         System.out.println("Exiting game-thank you for playing...");
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2500);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("There was something wrong");
-        }
-        ;
+        };
         System.exit(0);
     }
 
