@@ -13,7 +13,8 @@ public class RunGame {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("There was something wrong");
-        };
+        }
+        ;
         System.exit(0);
     }
 
@@ -34,29 +35,56 @@ public class RunGame {
     }
 
     public static void main(String[] args) {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+
         String pt1 = "(\\d?\\d?\\d?\\d)[\\s,/.](\\d?\\d?\\d?\\d)[\\s,/.](\\d?\\d?\\d?\\d)";
         String pt2 = "(-?\\d?\\d?\\d?\\d)[\\s,/.](-?\\d?\\d?\\d?\\d)";
         Pattern p1 = Pattern.compile(pt1);
         Pattern p2 = Pattern.compile(pt2);
         Scanner sc = new Scanner(System.in);
+        String[] gridScale;
 
-        System.out.println("Please enter the size of game grid and the number of ships");
+        while (true) {
 
-        String input = sc.nextLine();
-        if (input.equals("exit")) {
-            sc.close();
-            exit();
+            System.out.println("Please enter the size of game grid and the number of ships");
+            String input = sc.nextLine();
+            if (input.equals("exit")) {
+                sc.close();
+                exit();
+            }
+            gridScale = findCoordinate(p1, input);
+            if (gridScale[2] == "none") {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+                System.out.println("Incorrect input");
+                continue;
+            }
+            if (Integer.parseInt(gridScale[0]) < 3 || Integer.parseInt(gridScale[1]) < 3 || Integer
+                    .parseInt(gridScale[2]) > Integer.parseInt(gridScale[0]) * Integer.parseInt(gridScale[1])) {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+                System.out.println("Unreasonable input");
+                continue;
+            }
+            break;
         }
-        String[] gridScale = findCoordinate(p1, input);
+        ;
         int row = Integer.parseInt(gridScale[0]);
         int col = Integer.parseInt(gridScale[1]);
         int num = Integer.parseInt(gridScale[2]);
 
         Game game = new Game(row, col, num);
 
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+
         while (true) {
+            System.out.println("Please enter the coordinate you want to hit");
             String playerInput = sc.nextLine();
-            if(playerInput.equals("exit")){exit();}
+            if (playerInput.equals("exit")) {
+                exit();
+            }
             game.clearScreen();
             String[] temp = findCoordinate(p2, playerInput);
             if (temp[0] == "none") {
