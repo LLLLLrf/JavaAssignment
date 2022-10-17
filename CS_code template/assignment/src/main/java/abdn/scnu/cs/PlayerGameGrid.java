@@ -9,12 +9,12 @@ public class PlayerGameGrid extends GameGrid{
     public void printGrid(){
         System.out.println("My GameGrid");
         System.out.print(" ");
-        for(int i=0;i<gameGrid.length;i++){System.out.print(i);}
+        for(int i=0;i<gameGrid.length;i++){System.out.print(" "+i);}
         System.out.println("");
         for (int i=0;i<gameGrid.length;i++) {
             System.out.print(i);
             for (int j=0;j<gameGrid[0].length;j++) {
-                    System.out.print(gameGrid[i][j]);
+                    System.out.print(" "+gameGrid[i][j]);
             }
             System.out.println();
         }

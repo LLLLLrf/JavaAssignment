@@ -81,18 +81,24 @@ public class Game implements GameControls {
 
         // opponent's turn
         Random rand = new Random();
+        res = false;
         while (true) {
             int r = rand.nextInt(this.row);
             int c = rand.nextInt(this.col);
             // if the coordinate has been attacked, randomly choose another one
-            if (oppGameGrid.gameGrid[r][c] == "%" || oppGameGrid.gameGrid[r][c] == "X") {
+            if (myGameGrid.gameGrid[r][c].equals("%") || myGameGrid.gameGrid[r][c].equals("X")) {
                 continue;
             }
             for (int i = 0; i < myGameGrid.ships.length; i++) {
                 if (myGameGrid.ships[i].checkAttack(r, c)) {
                     myGameGrid.gameGrid[r][c] = "X";
+                    if(!res){
+                        res=true;
+                    }
                 } else {
-                    myGameGrid.gameGrid[r][c] = "%";
+                    if(!res){
+                        myGameGrid.gameGrid[r][c] = "%";
+                    }
                 }
             }
             myGameGrid.printGrid();
@@ -147,7 +153,7 @@ public class Game implements GameControls {
         if (input == "exit") {
             System.out.println("Exiting game-thank you for playing...");
             try {
-                Thread.sleep(3000);
+                Thread.sleep(2500);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("There was something wrong");
