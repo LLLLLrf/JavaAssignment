@@ -27,7 +27,5 @@ public abstract class AbstractBattleShip {
 	
 	public abstract void setShipCoordinates(int [][] coordinates) ;
 	
-	
-	
-	
+		
 }
