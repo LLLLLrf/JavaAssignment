@@ -7,7 +7,7 @@ public class PlayerGameGrid extends GameGrid{
 
 
     public void printGrid(){
-        System.out.println("My GameGrid");
+        System.out.println("\nMy GameGrid");
         System.out.print(" ");
         for(int i=0;i<gameGrid.length;i++){System.out.print(" "+i);}
         System.out.println("");

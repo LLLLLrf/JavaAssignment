@@ -7,9 +7,6 @@ public class GameGrid extends AbstractGameGrid {
     protected int height;
     protected int num;
 
-    // public String[][] gameGrid;
-    // public AbstractBattleShip[] ships;
-
     // Define constructors
     public GameGrid() {
     }

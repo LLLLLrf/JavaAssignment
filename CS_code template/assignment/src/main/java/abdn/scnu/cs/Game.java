@@ -1,10 +1,11 @@
 package abdn.scnu.cs;
 
 import java.util.Random;
+// import abdn.scnu.cs.RunGame;
 
 // import java.io.*;
 
-public class Game implements GameControls {
+public class Game implements GameControls{
     int row;
     int col;
     int num;
@@ -17,12 +18,6 @@ public class Game implements GameControls {
         this.num = num;
         myGameGrid = new PlayerGameGrid(row, col, num);
         oppGameGrid = new OpponentGameGrid(row, col, num);
-    }
-
-    // Use this function to clean the output page
-    public void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
     }
 
     public void playRound(String input) {
@@ -60,7 +55,6 @@ public class Game implements GameControls {
         for (int i = 0; i < oppGameGrid.ships.length; i++) {
             if (oppGameGrid.ships[i].checkAttack(hit_coordinates[0], hit_coordinates[1])) {
                 System.out.printf("HIT %s!!!", oppGameGrid.ships[i].getName());
-                System.out.println("");
                 oppGameGrid.gameGrid[hit_coordinates[0]][hit_coordinates[1]] = "X";
                 if (!res) {
                     res = true;
@@ -73,10 +67,10 @@ public class Game implements GameControls {
         }
 
         if (!res) {
-            System.out.println("MISS!!!");
+            System.out.print("MISS!!!");
         }
 
-        System.out.println("");
+        System.out.println("\n");
         oppGameGrid.printGrid();
 
         // opponent's turn
@@ -106,6 +100,33 @@ public class Game implements GameControls {
         }
     };
 
+    public boolean checkShips(String input){
+        
+        if(input.equals("check")){
+            RunGame.clear();
+            System.out.println("___________myships___________");
+            for (int i = 0; i < myGameGrid.ships.length; i++) {
+                AbstractBattleShip ship = myGameGrid.ships[i];
+                if (ship.getHits() < 3) {
+                    System.out.println(ship.name+" alive"+" hits:"+String.valueOf(ship.hits));
+                } else {
+                    System.out.println(ship.name+" dead");
+                }
+            }
+            System.out.println("_________opponentship_________");
+            for (int i = 0; i < oppGameGrid.ships.length; i++) {
+                AbstractBattleShip ship = oppGameGrid.ships[i];
+                if (ship.getHits() < 3) {
+                    System.out.println(ship.name+" alive"+" hits:"+String.valueOf(ship.hits));
+                } else {
+                    System.out.println(ship.name+" dead");
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     public boolean checkVictory() {
         // record the number of dead ships, if all die, game over
         int my_deadships = 0;
@@ -131,7 +152,8 @@ public class Game implements GameControls {
         boolean Ilose = false;
         if (my_deadships == myGameGrid.ships.length) {
             Ilose = true;
-        } else if (opp_deadships == oppGameGrid.ships.length) {
+        }
+        if(opp_deadships == oppGameGrid.ships.length) {
             Iwin = true;
         }
         if (Iwin) {
@@ -151,15 +173,7 @@ public class Game implements GameControls {
 
     public void exitGame(String input) {
         if (input == "exit") {
-            System.out.println("Exiting game-thank you for playing...");
-            try {
-                Thread.sleep(2500);
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("There was something wrong");
-            }
-            ;
-            System.exit(0);
+            RunGame.exit();
         }
     };
 
