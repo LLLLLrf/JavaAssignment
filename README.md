@@ -2,15 +2,16 @@
 ## JavaAssignment
 ***
 ## How to begin
-run the main function at **RunGame.java** 
-```./CS_code template/assignment/src/main/java/abdn/scnu/cs/RunGame.java```
+run the command in **assigment** directory
+```./CS_code template/assignment```
+
 use  ```mvn clean test``` to run the test
+use ```"mvn compile exec:java -D"exec.mainClass"="abdn.scnu.cs.RunGame"``` to run the main function(no arguments are required)
 
 the separator between numbers can be **"." "/" "," " "**
+
 The following are some examples
-```
-1,2      1 2      1/2      1.2
-```
+```1,2      1 2      1/2      1.2```
 
 ## File Structure
 
