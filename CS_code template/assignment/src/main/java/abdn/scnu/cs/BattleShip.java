@@ -5,13 +5,11 @@ import java.util.Random;
 public class BattleShip extends AbstractBattleShip {
     Random r = new Random();
 
-
     protected String[] orientations = { "horizontal", "vertical" };
 
     // Define constructors
     public BattleShip() {
     }
-
     public BattleShip(String name) {
         this.name = name;
         this.shipOrientation = orientations[r.nextInt(2)];
@@ -51,6 +49,7 @@ public class BattleShip extends AbstractBattleShip {
     }
 
     // Define other methods
+    // check whether the ship was attacked
     @Override
     public boolean checkAttack(int row, int column) {
 

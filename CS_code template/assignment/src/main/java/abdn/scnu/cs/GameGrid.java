@@ -11,18 +11,16 @@ public class GameGrid extends AbstractGameGrid {
     public GameGrid() {
     }
 
-    public GameGrid(int width, int height, int num) {
-        this.width = width;
+    public GameGrid(int height, int width, int num) {
         this.height = height;
+        this.width = width;
         this.num = num;
 
-        // 初始化棋盘变量，开辟适当空间
+        // Initialize the game grid, open up an appropriate storage space
         gameGrid = new String[height][width];
-
-        // 初始化棋盘
         initializeGrid();
 
-        // 建船
+        // generate ships for game
         generateShips(num);
 
         for (int i = 0; i < num; i++) {

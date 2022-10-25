@@ -10,7 +10,7 @@ public class RunGame {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
-
+    // Exit the game
     public static void exit() {
         String dots = "";
         for (int i = 0; i < 7; i++) {
@@ -28,6 +28,7 @@ public class RunGame {
         System.exit(0);
     }
 
+    // match the coordinate to avoid misinput
     public static String[] findCoordinate(Pattern p, String input) {
         Matcher m = p.matcher(input);
         String[] coord = { "none", "none", "none" };
@@ -54,7 +55,6 @@ public class RunGame {
         String[] gridScale;
 
         while (true) {
-
             System.out.println("Please enter the size of game grid and the number of ships");
             String input = sc.nextLine();
             if (input.equals("exit")) {
@@ -76,8 +76,7 @@ public class RunGame {
                 continue;
             }
             break;
-        }
-        ;
+        };
         int row = Integer.parseInt(gridScale[0]);
         int col = Integer.parseInt(gridScale[1]);
         int num = Integer.parseInt(gridScale[2]);
@@ -98,6 +97,9 @@ public class RunGame {
                 System.out.println("press 'enter' to return to the game");
                 sc.nextLine();
                 clear();
+                System.out.println("\n");
+                game.oppGameGrid.printGrid();
+                game.myGameGrid.printGrid();
                 continue;
             }
             // clear the console
@@ -128,7 +130,6 @@ public class RunGame {
                 };
                 exit();
             }
-
         }
     }
 }

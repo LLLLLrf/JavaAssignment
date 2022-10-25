@@ -9,7 +9,7 @@ public class OpponentGameGrid extends GameGrid {
     public void printGrid() {
         System.out.println("Opponent's GameGrid");
         System.out.print(" ");
-        for (int i = 0; i < gameGrid.length; i++) {
+        for (int i = 0; i < gameGrid[0].length; i++) {
             System.out.print(" " + i);
         }
         System.out.println("");

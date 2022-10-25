@@ -3,7 +3,7 @@
 ***
 ## How to begin
 run the main function at **RunGame.java** 
-
+```./CS_code template/assignment/src/main/java/abdn/scnu/cs/RunGame.java```
 use  ```mvn clean test``` to run the test
 
 the separator between numbers can be **"." "/" "," " "**
