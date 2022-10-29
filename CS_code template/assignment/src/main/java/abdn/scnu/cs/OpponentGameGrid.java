@@ -10,11 +10,11 @@ public class OpponentGameGrid extends GameGrid {
         System.out.println("Opponent's GameGrid");
         System.out.print(" ");
         for (int i = 0; i < gameGrid[0].length; i++) {
-            System.out.print(" " + i);
+            System.out.print(" " + i % 10);
         }
         System.out.println("");
         for (int i = 0; i < gameGrid.length; i++) {
-            System.out.print(i);
+            System.out.print(i % 10);
             for (int j = 0; j < gameGrid[0].length; j++) {
                 if (gameGrid[i][j] == "*") {
                     System.out.print(" .");

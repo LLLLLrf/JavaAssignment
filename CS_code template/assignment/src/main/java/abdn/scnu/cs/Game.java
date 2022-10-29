@@ -1,9 +1,6 @@
 package abdn.scnu.cs;
 
 import java.util.Random;
-// import abdn.scnu.cs.RunGame;
-
-// import java.io.*;
 
 public class Game implements GameControls {
     int row;
@@ -13,6 +10,7 @@ public class Game implements GameControls {
     PlayerGameGrid myGameGrid;
     OpponentGameGrid oppGameGrid;
 
+    // Define the constructor
     public Game(int row, int col, int num) {
         this.row = row;
         this.col = col;
@@ -21,8 +19,20 @@ public class Game implements GameControls {
         oppGameGrid = new OpponentGameGrid(row, col, num);
     }
 
+    // Implement getter methods to retrieve player's and opponent's grids
+    @Override
+    public AbstractGameGrid getPlayersGrid() {
+        return myGameGrid;
+    };
+
+    @Override
+    public AbstractGameGrid getOpponentssGrid() {
+        return oppGameGrid;
+    };
+
     // execute a round of game
     public void playRound(String input) {
+        exitGame(input);
         String[] coord = input.split(",");
         int[] hit_coordinates = { Integer.parseInt(coord[0]), Integer.parseInt(coord[1]) };
 
@@ -30,7 +40,7 @@ public class Game implements GameControls {
         // whether the coordinate is out of range
         if (hit_coordinates[0] >= this.row || hit_coordinates[1] >= this.col) {
             System.out.printf(
-                    "Coordinates out of range, please enter a number less than %d for row and less than %d for column\n\n",
+                    "Coordinates out of range, please enter numbers less than %d for row and less than %d for column\n\n",
                     this.row, this.col);
             oppGameGrid.printGrid();
             myGameGrid.printGrid();
@@ -59,6 +69,7 @@ public class Game implements GameControls {
         // traverse all the ships
         for (int i = 0; i < oppGameGrid.ships.length; i++) {
             if (oppGameGrid.ships[i].checkAttack(hit_coordinates[0], hit_coordinates[1])) {
+                // print out the ship name
                 System.out.printf("HIT %s!!!", oppGameGrid.ships[i].getName());
                 oppGameGrid.gameGrid[hit_coordinates[0]][hit_coordinates[1]] = "X";
                 if (!res) {
@@ -80,12 +91,11 @@ public class Game implements GameControls {
         // waiting for the computer to attack
         try {
             Random r = new Random();
-            Thread.sleep(r.nextInt(550) + 450);
+            Thread.sleep(r.nextInt(650) + 350);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("There was something wrong");
-        }
-        ;
+        };
 
         Random rand = new Random();
         res = false;
@@ -103,7 +113,7 @@ public class Game implements GameControls {
                         res = true;
                     }
                     System.out.printf("HIT %s!!!", myGameGrid.ships[i].getName());
-                } 
+                }
             }
             if (!res) {
                 myGameGrid.gameGrid[r][c] = "%";
@@ -116,7 +126,6 @@ public class Game implements GameControls {
 
     // an extra function to check the progress of the battle
     public boolean checkShips(String input) {
-
         if (input.equals("check")) {
             RunGame.clear();
             System.out.println("___________myships___________");
@@ -195,13 +204,5 @@ public class Game implements GameControls {
         if (input == "exit") {
             RunGame.exit();
         }
-    };
-
-    public AbstractGameGrid getPlayersGrid() {
-        return myGameGrid;
-    };
-
-    public AbstractGameGrid getOpponentssGrid() {
-        return oppGameGrid;
     };
 }

@@ -13,6 +13,9 @@ the separator between numbers can be **"." "/" "," " "**
 The following are some examples
 ```1,2      1 2      1/2      1.2```
 
+enter **exit** to quit the game whenever you want
+enter **check** if you want to check how many ships are still alive and how many hits they have got
+
 ## File Structure
 
 ```
