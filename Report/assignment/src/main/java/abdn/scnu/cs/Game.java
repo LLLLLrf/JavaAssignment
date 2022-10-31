@@ -128,7 +128,7 @@ public class Game implements GameControls {
     public boolean checkShips(String input) {
         if (input.equals("check")) {
             RunGame.clear();
-            System.out.println("___________myships___________");
+            System.out.println("______________myships______________");
             for (int i = 0; i < myGameGrid.ships.length; i++) {
                 AbstractBattleShip ship = myGameGrid.ships[i];
                 if (ship.getHits() < 3) {
@@ -137,7 +137,7 @@ public class Game implements GameControls {
                     System.out.println(ship.name + " dead");
                 }
             }
-            System.out.println("_________opponentship_________");
+            System.out.println("____________opponentship___________");
             for (int i = 0; i < oppGameGrid.ships.length; i++) {
                 AbstractBattleShip ship = oppGameGrid.ships[i];
                 if (ship.getHits() < 3) {
