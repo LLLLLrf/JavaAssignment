@@ -8,28 +8,24 @@ public class GameGrid extends AbstractGameGrid {
     protected int num;
 
     // Define constructors
-    public GameGrid() {
-    }
-
-    public GameGrid(int width, int height, int num) {
-        this.width = width;
+    public GameGrid(int height, int width, int num) {
         this.height = height;
+        this.width = width;
         this.num = num;
 
-        // 初始化棋盘变量，开辟适当空间
+        // Initialize the game grid, open up an appropriate storage space
         gameGrid = new String[height][width];
-
-        // 初始化棋盘
         initializeGrid();
 
-        // 建船
+        // generate ships for game
         generateShips(num);
-
+        // place the ships
         for (int i = 0; i < num; i++) {
             placeShip(ships[i]);
         }
     }
 
+    // Define getter and setter methods
     public int getWidth() {
         return this.width;
     }
@@ -64,30 +60,29 @@ public class GameGrid extends AbstractGameGrid {
         }
     };
 
-    // this should place the ship on the grid using "*" symbol
+    // this function place the ship on the grid using "*" symbol
     @Override
     public void placeShip(AbstractBattleShip ship) {
         Random r = new Random();
-        int[][] coordinate = new int[3][2];
+        int[][] coordinates = new int[3][2];
         String orient = ship.getShipOrientation();
-
         int row;
         int col;
         if (orient.equals("horizontal")) {
             row = r.nextInt(height);
             col = r.nextInt(width - 2) + 1;
-            coordinate[0][0] = row;
-            coordinate[0][1] = col;
-            ship.setShipCoordinates(coordinate);
+            coordinates[0][0] = row;
+            coordinates[0][1] = col;
+            ship.setShipCoordinates(coordinates);
             this.gameGrid[row][col - 1] = "*";
             this.gameGrid[row][col + 1] = "*";
             this.gameGrid[row][col] = "*";
         } else if (orient.equals("vertical")) {
             row = r.nextInt(height - 2) + 1;
             col = r.nextInt(width);
-            coordinate[0][0] = row;
-            coordinate[0][1] = col;
-            ship.setShipCoordinates(coordinate);
+            coordinates[0][0] = row;
+            coordinates[0][1] = col;
+            ship.setShipCoordinates(coordinates);
             this.gameGrid[row + 1][col] = "*";
             this.gameGrid[row - 1][col] = "*";
             this.gameGrid[row][col] = "*";

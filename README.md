@@ -2,15 +2,19 @@
 ## JavaAssignment
 ***
 ## How to begin
-run the main function at **RunGame.java** 
+make sure you run the command in **assigment** directory
+```./CS_code template/assignment```
 
 use  ```mvn clean test``` to run the test
+use ```mvn compile exec:java -D"exec.mainClass"="abdn.scnu.cs.RunGame" -D"exec.args"="arg1 arg2 arg3"``` to run the main function (arg1: height of game grid; arg2: width of game grid; arg3: number of ships)
+A version that do not need arguments was provided too, you can check that in **RunGame.java**
 
 the separator between numbers can be **"." "/" "," " "**
 The following are some examples
-```
-1,2      1 2      1/2      1.2
-```
+```1,2      1 2      1/2      1.2```
+
+enter **exit** to quit the game whenever you want
+enter **check** if you want to check how many ships are still alive and how many hits they have got
 
 ## File Structure
 
