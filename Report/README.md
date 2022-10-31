@@ -3,7 +3,7 @@
 ***
 ## How to begin
 make sure you run the command in **assigment** directory
-```./CS_code template/assignment```
+```./Report/assignment```
 
 use  ```mvn clean test``` to run the test
 use ```mvn compile exec:java -D"exec.mainClass"="abdn.scnu.cs.RunGame" -D"exec.args"="arg1 arg2 arg3"``` to run the main function (arg1: height of game grid; arg2: width of game grid; arg3: number of ships)
@@ -20,7 +20,9 @@ enter **check** if you want to check how many ships are still alive and how many
 
 ```
 │  .codio
-│  files.txt
+│  files_structure.txt
+|  JavaReport.pdf
+|  README.md
 │  
 └─assignment
     │  pom.xml
