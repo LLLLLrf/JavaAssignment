@@ -4,8 +4,7 @@ public class PlayerGameGrid extends GameGrid{
     public PlayerGameGrid(int height,int width,int num) {
         super(height,width,num);
     }
-
-
+    // print player's game grid
     public void printGrid(){
         System.out.println("\nMy GameGrid");
         System.out.print(" ");

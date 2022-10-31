@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="abdn.scnu.cs.GameTests" time="2.774" tests="11" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="abdn.scnu.cs.GameTests" time="1.52" tests="11" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="18"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\bin"/>
-    <property name="sun.java.command" value="D:\tmpdir\Temp\surefire2093245609322749610\surefirebooter8800138452619092176.jar D:\tmpdir\Temp\surefire2093245609322749610 2022-10-25T14-57-40_785-jvmRun1 surefire12149746713718223528tmp surefire_01548659745021880687tmp"/>
+    <property name="sun.java.command" value="D:\tmpdir\Temp\surefire4318743920179088823\surefirebooter17970525450480847614.jar D:\tmpdir\Temp\surefire4318743920179088823 2022-10-31T13-22-30_685-jvmRun1 surefire15713030565089785725tmp surefire_06953816505268693794tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\l&apos;l&apos;l\Desktop\JavaAssignment\CS_code template\assignment\target\test-classes;C:\Users\l&apos;l&apos;l\Desktop\JavaAssignment\CS_code template\assignment\target\classes;C:\Users\l&apos;l&apos;l\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\l&apos;l&apos;l\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="D:\tmpdir\Temp\surefire2093245609322749610\surefirebooter8800138452619092176.jar"/>
+    <property name="surefire.real.class.path" value="D:\tmpdir\Temp\surefire4318743920179088823\surefirebooter17970525450480847614.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="18.0.1.1+2-6"/>
@@ -56,15 +56,15 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="62.0"/>
   </properties>
-  <testcase name="t1_1_a" classname="abdn.scnu.cs.GameTests" time="0.01"/>
+  <testcase name="t1_1_a" classname="abdn.scnu.cs.GameTests" time="0.015"/>
   <testcase name="t1_1_b" classname="abdn.scnu.cs.GameTests" time="0"/>
   <testcase name="t1_2" classname="abdn.scnu.cs.GameTests" time="0"/>
   <testcase name="t1_3" classname="abdn.scnu.cs.GameTests" time="0"/>
   <testcase name="t2_1" classname="abdn.scnu.cs.GameTests" time="0"/>
-  <testcase name="t2_2" classname="abdn.scnu.cs.GameTests" time="0"/>
-  <testcase name="t2_3" classname="abdn.scnu.cs.GameTests" time="0.076"/>
-  <testcase name="t2_4" classname="abdn.scnu.cs.GameTests" time="0.002"/>
-  <testcase name="t3_1" classname="abdn.scnu.cs.GameTests" time="0.005"/>
-  <testcase name="t3_3" classname="abdn.scnu.cs.GameTests" time="0.004"/>
-  <testcase name="t3_4" classname="abdn.scnu.cs.GameTests" time="2.595"/>
+  <testcase name="t2_2" classname="abdn.scnu.cs.GameTests" time="0.001"/>
+  <testcase name="t2_3" classname="abdn.scnu.cs.GameTests" time="0.045"/>
+  <testcase name="t2_4" classname="abdn.scnu.cs.GameTests" time="0"/>
+  <testcase name="t3_1" classname="abdn.scnu.cs.GameTests" time="0"/>
+  <testcase name="t3_3" classname="abdn.scnu.cs.GameTests" time="0"/>
+  <testcase name="t3_4" classname="abdn.scnu.cs.GameTests" time="1.418"/>
 </testsuite>

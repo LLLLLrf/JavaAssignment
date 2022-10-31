@@ -66,7 +66,7 @@ public class Game implements GameControls {
 
         // mark the result, if hit, res=true
         boolean res = false;
-        // traverse all the ships
+        // iterate through all the ships
         for (int i = 0; i < oppGameGrid.ships.length; i++) {
             if (oppGameGrid.ships[i].checkAttack(hit_coordinates[0], hit_coordinates[1])) {
                 // print out the ship name
@@ -102,7 +102,7 @@ public class Game implements GameControls {
         while (true) {
             int r = rand.nextInt(this.row);
             int c = rand.nextInt(this.col);
-            // if the coordinate has been attacked, randomly choose another one
+            // if the coordinates have been attacked, randomly choose another one
             if (myGameGrid.gameGrid[r][c].equals("%") || myGameGrid.gameGrid[r][c].equals("X")) {
                 continue;
             }
@@ -146,6 +146,7 @@ public class Game implements GameControls {
                     System.out.println(ship.name + " dead");
                 }
             }
+            System.out.println("press 'enter' to return to the game");
             return true;
         }
         return false;

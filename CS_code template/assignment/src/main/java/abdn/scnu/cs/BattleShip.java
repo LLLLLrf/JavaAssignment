@@ -4,13 +4,11 @@ import java.util.Random;
 
 public class BattleShip extends AbstractBattleShip {
     Random r = new Random();
-
     protected String[] orientations = { "horizontal", "vertical" };
 
     // Define the constructor
     public BattleShip(String name) {
         this.name = name;
-        
         this.shipOrientation = orientations[r.nextInt(2)];
     }
 
