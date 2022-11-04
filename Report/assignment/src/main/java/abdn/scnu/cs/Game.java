@@ -69,7 +69,7 @@ public class Game implements GameControls {
         // iterate through all the ships
         for (int i = 0; i < oppGameGrid.ships.length; i++) {
             if (oppGameGrid.ships[i].checkAttack(hit_coordinates[0], hit_coordinates[1])) {
-                // print out the ship name
+                // print out the ship's name
                 System.out.printf("HIT %s!!!", oppGameGrid.ships[i].getName());
                 oppGameGrid.gameGrid[hit_coordinates[0]][hit_coordinates[1]] = "X";
                 if (!res) {
@@ -159,7 +159,7 @@ public class Game implements GameControls {
         int opp_deadships = 0;
         for (int i = 0; i < myGameGrid.ships.length; i++) {
             AbstractBattleShip ship = myGameGrid.ships[i];
-            // if hits>=3, the ship has died
+            // if hits>=3, the ship has been distroyed
             if (ship.getHits() < 3) {
                 continue;
             } else {
