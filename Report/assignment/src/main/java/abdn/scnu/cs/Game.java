@@ -15,6 +15,7 @@ public class Game implements GameControls {
         this.row = row;
         this.col = col;
         this.num = num;
+        // instantiate PlayerGameGrid and OpponentGameGrid
         myGameGrid = new PlayerGameGrid(row, col, num);
         oppGameGrid = new OpponentGameGrid(row, col, num);
     }
@@ -32,7 +33,9 @@ public class Game implements GameControls {
 
     // execute a round of game
     public void playRound(String input) {
+        // check the input
         exitGame(input);
+        // change the input string to an integer array
         String[] coord = input.split(",");
         int[] hit_coordinates = { Integer.parseInt(coord[0]), Integer.parseInt(coord[1]) };
 
@@ -63,13 +66,12 @@ public class Game implements GameControls {
         }
 
         // player's turn
-
         // mark the result, if hit, res=true
         boolean res = false;
         // iterate through all the ships
         for (int i = 0; i < oppGameGrid.ships.length; i++) {
             if (oppGameGrid.ships[i].checkAttack(hit_coordinates[0], hit_coordinates[1])) {
-                // print out the ship name
+                // print out the ship's name
                 System.out.printf("HIT %s!!!", oppGameGrid.ships[i].getName());
                 oppGameGrid.gameGrid[hit_coordinates[0]][hit_coordinates[1]] = "X";
                 if (!res) {
@@ -159,7 +161,7 @@ public class Game implements GameControls {
         int opp_deadships = 0;
         for (int i = 0; i < myGameGrid.ships.length; i++) {
             AbstractBattleShip ship = myGameGrid.ships[i];
-            // if hits>=3, the ship has died
+            // if hits>=3, the ship has been distroyed
             if (ship.getHits() < 3) {
                 continue;
             } else {

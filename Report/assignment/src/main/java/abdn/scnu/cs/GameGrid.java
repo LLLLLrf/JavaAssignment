@@ -65,6 +65,7 @@ public class GameGrid extends AbstractGameGrid {
     public void placeShip(AbstractBattleShip ship) {
         Random r = new Random();
         int[][] coordinates = new int[3][2];
+        // use getter method to get the orientation of the ship
         String orient = ship.getShipOrientation();
         int row;
         int col;

@@ -1,4 +1,5 @@
 // Welcome to this game! Please make sure you have check README.md before you run the program
+// mvn compile exec:java -D"exec.mainClass"="abdn.scnu.cs.RunGame" -D"exec.args"="arg1 arg2 arg3"  (Run this in "assignment" directory)
 package abdn.scnu.cs;
 
 import java.util.Scanner;
@@ -87,6 +88,7 @@ public class RunGame {
     // main function
     public static void main(String[] args) {
         clear();
+        // regular expression
         String pt1 = "(\\d{1,})[\\s,/.](\\d{1,})[\\s,/.](\\d{1,})";
         String pt2 = "(-?\\d{1,})[\\s,/.](-?\\d{1,})";
         String pt3 = "exit|check";

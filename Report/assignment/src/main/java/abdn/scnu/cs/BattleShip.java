@@ -9,6 +9,7 @@ public class BattleShip extends AbstractBattleShip {
     // Define the constructor
     public BattleShip(String name) {
         this.name = name;
+        // Randomly choose an orientation
         this.shipOrientation = orientations[r.nextInt(2)];
     }
 
@@ -47,6 +48,7 @@ public class BattleShip extends AbstractBattleShip {
     // check whether the ship was attacked
     @Override
     public boolean checkAttack(int row, int column) {
+        // Only ships that are hit less than 3 times can be hit
         if (this.hits < 3) {
             if(shipOrientation=="horizontal"){
                 if(shipCoordinates[0][0]==row && shipCoordinates[0][1]==column){
