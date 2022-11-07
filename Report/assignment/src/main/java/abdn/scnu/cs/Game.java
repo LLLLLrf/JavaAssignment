@@ -15,6 +15,7 @@ public class Game implements GameControls {
         this.row = row;
         this.col = col;
         this.num = num;
+        // instantiate PlayerGameGrid and OpponentGameGrid
         myGameGrid = new PlayerGameGrid(row, col, num);
         oppGameGrid = new OpponentGameGrid(row, col, num);
     }
@@ -32,7 +33,9 @@ public class Game implements GameControls {
 
     // execute a round of game
     public void playRound(String input) {
+        // check the input
         exitGame(input);
+        // change the input string to an integer array
         String[] coord = input.split(",");
         int[] hit_coordinates = { Integer.parseInt(coord[0]), Integer.parseInt(coord[1]) };
 
@@ -63,7 +66,6 @@ public class Game implements GameControls {
         }
 
         // player's turn
-
         // mark the result, if hit, res=true
         boolean res = false;
         // iterate through all the ships
