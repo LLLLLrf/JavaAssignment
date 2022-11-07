@@ -21,7 +21,7 @@ enter **check** if you want to check how many ships are still alive and how many
 ```
 │  .codio
 │  files_structure.txt
-|  JavaReport.pdf
+|  JC2002_Assignment_Liao_Ruofan_50079732.pdf
 │  
 └─assignment
     │  pom.xml
